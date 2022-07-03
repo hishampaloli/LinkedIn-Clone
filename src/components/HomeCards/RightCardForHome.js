@@ -3,7 +3,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function RightCardForHome() {
   return (
-    <div className="right  rounded-lg">
+    <div className="rightt  rounded-lg">
       <p>LinkedIn News</p>
       <ul>
         <li>

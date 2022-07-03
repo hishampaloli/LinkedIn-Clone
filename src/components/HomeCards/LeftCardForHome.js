@@ -1,14 +1,19 @@
 import React from "react";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import TouchAppIcon from "@mui/icons-material/TouchApp";
+import { useSelector } from "react-redux";
 
 function LeftCardForHome() {
+
+  const user = useSelector((state) => state.userState.user);
+  console.log(user.photoURL);
+
   return (
-    <div className="left flex flex-col items-center relative ">
+    <div className="leftt flex flex-col items-center relative ">
       <div className="left-top rounded-t-lg"></div>
 
       <div className="left-body flex flex-col items-center">
-        <div className="prof"><img style={{borderRadius:'50%'}} src="https://media-exp2.licdn.com/dms/image/C5603AQH9Fjs8i_oRuQ/profile-displayphoto-shrink_100_100/0/1643992170235?e=1661385600&v=beta&t=nsW4uIU-VeKsdTh6fCc0Mx0OwEAXgWG9xvA70iaeFkI" alt="" /></div>
+        <div className="prof"><img style={{borderRadius:'50%'}} src={user ? user.photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'} alt="" /></div>
         <h1 className="text-base">Hisham Paloli</h1>
         <p>MernStack web developer</p>
       </div>

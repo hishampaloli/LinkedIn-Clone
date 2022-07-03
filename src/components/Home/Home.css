@@ -12,7 +12,7 @@
     display: flex;
     width: 100%;
 }
-.left {
+.leftt {
     width: 230px;
     min-width:230px;
     background-color: white;
@@ -109,36 +109,36 @@
     border-radius: 25px;
 }
 
-.right {
+.rightt {
     width: 380px;
     min-width: 300px;
     background-color: white;
     border: 1px solid lightgray;
     margin-left: 20px;
 }
-.right p{
+.rightt p{
     font-size: 16px;
     font-weight: 600;
     padding: 20px;
 }
 
-.right li {
+.rightt li {
     width: 100%;
     padding: 0px 10px;
 }
 
-.right li:hover {
+.rightt li:hover {
     background-color: rgba(173, 173, 173, 0.461);
 }
-.right li p{
+.rightt li p{
     font-size: 13px;
     padding: 0 10px;
 }
-.right li small {
+.rightt li small {
     padding: 0 10px;
 }
 
-.right h1 {
+.rightt h1 {
     padding: 20px;
     color: rgba(0, 0, 0, 0.721);
 }
@@ -197,8 +197,87 @@
     background-color: rgba(0, 0, 0, 0.136);
     border-radius: 5px;
 }
+
+
+.post {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal {
+    width: 50%;
+    background-color: white;
+    max-width: 600px;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+.post.none {
+    display: none;
+}
+
+.modal-top {
+    border-bottom: 1px solid lightgrey;
+}
+
+.modal-top p {
+    font-size: 18px;
+}
+
+.mdpf-left img{
+    border-radius: 50%;
+    width: 55px;
+    height:55px ;
+}
+.mdpf-right h1{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.mdpf-right button {
+    font-size: 13px;
+    padding: 4px 15px;
+    border: 1px solid rgb(0, 0, 0,0.7);
+    color: rgb(0, 0, 0,0.7);
+    border-radius: 25px;
+}
+
+.modal-textarea textarea:focus {
+    outline: none;
+}
+
+.modal-bottom {
+    color: rgb(0, 0, 0,0.7);
+}
+
+.modal-bottom button {
+    background-color: rgb(43, 163, 255);
+    padding: 5px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.mdbt-top h1 {
+    color:rgb(24, 132, 255) ;
+    margin-bottom: 5px;
+}
+
+.modal-img img {
+    width: 45%;
+    height: 190px;
+}
 @media (max-width:1190px) {
-    .right {
+    .rightt {
         width: 200px;
         min-width: 250px;
     }
@@ -217,7 +296,7 @@
         width: 650px;
     }
     
-    .right {
+    .rightt {
         margin-left: 0;
         width: 380px;
         margin-top: 20px;
@@ -245,7 +324,7 @@
 
     
 
-    .right {
+    .rightt {
         width: 100%;
     }
  

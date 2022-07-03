@@ -6,12 +6,20 @@ import PeopleIcon from '@mui/icons-material/People';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';import BusinessCenter from '@mui/icons-material/BusinessCenter';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useDispatch, useSelector } from 'react-redux';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { signOut } from '../../Actions/userActions';
 
 
 function Header() {
-
+    const dispatch = useDispatch();
     const [st, setSt] = useState('h');
+    const user = useSelector((state) => state.userState.user)
+
+    const handleSignOut = (e) => {
+      setSt('s');
+      dispatch(signOut())
+    }
 
   return (
     <div className='header p-5 flex align-middle justify-between flex-row '>
@@ -31,7 +39,8 @@ function Header() {
                 <li className={st === 'j' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={() => setSt('j')}> <BusinessCenter /><p> Jobs</p></li>
                 <li className={st === 'm' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={() => setSt('m')}> <ChatIcon /><p> Message</p></li>
                 <li className={st === 'N' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={() => setSt('N')} > <NotificationsIcon /><p>Notification</p> </li>
-                <li className={st === 'me' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={() => setSt('me')}> <AccountCircleIcon /><p>Me</p></li>
+                <li className={st === 'me' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={() => setSt('me')}> <img style={{borderRadius:'50%', width: '30px', hight:'30px'}} src={user ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'} alt="" /> <p>Me</p></li>
+                <li className={st === 's' ? 'flex flex-col icons st items-center' : 'flex flex-col icons items-center'} onClick={handleSignOut}><p>Sign Out</p></li>
             </ul>
         </div>
     </div>

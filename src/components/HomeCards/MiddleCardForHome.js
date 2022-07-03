@@ -3,19 +3,32 @@ import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import WorkIcon from "@mui/icons-material/Work";
 import FeedIcon from "@mui/icons-material/Feed";
+import { useSelector, useDispatch } from "react-redux";
+import { setModal } from "../../Actions/showAction";
+import MiddlePostModal from "./MiddlePostModal";
 
 function MiddleCardForHome() {
+
+  const user = useSelector((state) => state.userState.user);
+  const dispatch = useDispatch();
+  const modal = useSelector((state) => state.showState.show)
+console.log('>>>>',modal);
+
+  const handleShow = () => {
+    dispatch(setModal(true))
+  }
+
   return (
     <div className="middle flex flex-col items-center rounded-lg">
       <div className="middle-top flex items-center justify-between">
         <div className="logo">
           <img
-            src="https://media-exp2.licdn.com/dms/image/C5603AQH9Fjs8i_oRuQ/profile-displayphoto-shrink_100_100/0/1643992170235?e=1661385600&v=beta&t=nsW4uIU-VeKsdTh6fCc0Mx0OwEAXgWG9xvA70iaeFkI"
+            src={user ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'}
             alt=""
           />
         </div>
 
-        <button>Ask your network for advice</button>
+        <button onClick={handleShow}>Ask your network for advice</button>
       </div>
       <div className="middle-bottom w-full list-none flex items-center justify-around">
         <li className="flex items-center">
@@ -43,6 +56,8 @@ function MiddleCardForHome() {
           Article
         </li>
       </div>
+     
+      {modal &&  < MiddlePostModal /> }
     </div>
   );
 }
