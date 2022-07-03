@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../../Actions/userActions";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import img1 from "./img/logo.png";
 import img2 from "./img/home-img.svg";
@@ -12,6 +13,7 @@ function Login() {
 
   const user = useSelector((state) => state.userState.user);
   console.log(">>>.", user);
+
 
   return (
     <div class="container">
@@ -34,7 +36,7 @@ function Login() {
           <li class="ico">
             <i class="fa-solid fa-briefcase"></i>Jobs
           </li>
-          <li class="join">Join now</li>
+          <Link to='/join' > <li class="join"> Join now </li></Link>
           <li>
             <button onClick={() => dispatch(signInWithGoogle())}>
               Sign in
@@ -68,7 +70,7 @@ function Login() {
           <li class="ico">
             <i class="fa-solid fa-briefcase"></i>Jobs
           </li>
-          <li class="join">Join now</li>
+          <Link to='/join' > <li class="join"> Join now </li></Link>
           <li>
             <button onClick={() => dispatch(signInWithGoogle())}>
               Sign in
@@ -81,11 +83,7 @@ function Login() {
         <div class="left">
           <h1>Welcome to your professional community</h1>
 
-          <input type="text" placeholder="Email or phone number" />
-          <input type="text" placeholder="Password" />
-          <label>Forgot password?</label>
-
-          <button class="sign-in">Sign in</button>
+           <Link to='/join'> <button class="sign-in" > Join Now</button> </Link>
 
           <div class="line">
             <div class="line-1"></div>
@@ -330,11 +328,5 @@ function Login() {
     </div>
   );
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.userState.user
-//   };
-// };
 
 export default Login;
