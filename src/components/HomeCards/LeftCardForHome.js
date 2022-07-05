@@ -19,7 +19,7 @@ function LeftCardForHome() {
   const profile = useSelector((state) => state.ProfileState.showProfile);
 
   const [profileImg, setProfileImg] = useState(null);
-  console.log(user.email);
+  // console.log(user.photoURL);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -67,7 +67,7 @@ function LeftCardForHome() {
             style={{ borderRadius: "50%", width: "80px", height: "80px" }}
             src={
               profile[0]
-                ? profile[0].sharedImg
+                ? profile[0].sharedImg 
                 : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
             }
             alt=""
