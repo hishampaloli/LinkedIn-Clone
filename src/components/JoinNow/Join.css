@@ -1,0 +1,51 @@
+.join {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginCard {
+    box-shadow: 2px 2px  10px rgba(0, 0, 0, 0.224);
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.login-email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+}
+.login-email label {
+    font-size: 13px;
+    color: rgb(79, 79, 79);
+}
+
+.login-email input {
+    padding: 5px;
+    border: 1px solid lightgrey;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-buttons button {
+    width: 280px;
+    padding: 10px;
+    background-color: #0a66c2;
+    border-radius: 24px;
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+
+}

@@ -1,5 +1,4 @@
-import { auth, provider, storage } from "../Firebase/Firebase";
-import db from "../Firebase/Firebase";
+import { auth, provider } from "../Firebase/Firebase";
 
 export const setUser = (payload) => ({
     type: 'SET_USER',
@@ -17,6 +16,31 @@ export const setUser = (payload) => ({
 }
   }
 
+  export const signInWithEmail = (email,password) => {
+    return (dispatch) => {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((auth) => {
+          // setUser(auth.user)
+          // console.log(auth.user);
+        })
+        .catch((error) => alert(error.message));
+    }
+  }
+  
+  export function loginAPI(email,password) {
+    return (dispatch) => {
+      auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        // setUser()
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+    }
+  }
+
   export const signOut = () => {
     return (dispatch) => {
         auth.signOut().then((res) => {
@@ -27,6 +51,8 @@ export const setUser = (payload) => ({
           })
     }
   }
+
+
 
   export function getUserAuth() {
     return (dispatch) => {

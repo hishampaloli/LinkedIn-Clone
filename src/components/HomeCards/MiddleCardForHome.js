@@ -23,7 +23,7 @@ console.log('>>>>',modal);
       <div className="middle-top flex items-center justify-between">
         <div className="logo">
           <img
-            src={user ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'}
+            src={user.photoURL ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'}
             alt=""
           />
         </div>

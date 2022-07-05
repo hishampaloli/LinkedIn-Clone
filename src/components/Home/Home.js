@@ -10,13 +10,18 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import InsertCommentOutlinedIcon from "@mui/icons-material/InsertCommentOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import {  useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { getProfileAPI } from "../../Actions/profileAction";
 
 function Home() {
 
+
+
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const user = useSelector((state) => state.userState.user);
-  console.log(user);
+
 
   return (
     <>
@@ -31,7 +36,11 @@ function Home() {
                 <div className="post-top flex flex-row justify-between">
                   <div className="pt-left">
                     <img
-                      src={user ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'}
+                      src={
+                        user
+                          ? user.photoURL
+                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
+                      }
                       alt=""
                     />
                   </div>
