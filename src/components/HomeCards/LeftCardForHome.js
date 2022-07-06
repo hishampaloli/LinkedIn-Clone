@@ -17,8 +17,9 @@ function LeftCardForHome() {
 
   const user = useSelector((state) => state.userState.user);
   const profile = useSelector((state) => state.ProfileState.showProfile);
-
   const [profileImg, setProfileImg] = useState(null);
+  // const [i, setI] = useState('');
+  // setI(user.photoURL)
   // console.log(user.photoURL);
   const dispatch = useDispatch();
 
@@ -73,8 +74,8 @@ function LeftCardForHome() {
             alt=""
           />
         </div>
-        <h1 className="text-base">Hisham Paloli</h1>
-        <p>MernStack web developer</p>
+        <h1 className="text-base"></h1>
+        <p>Welcome to linkedIn</p>
       </div>
 
       <div className="left-bottom">
