@@ -8,11 +8,10 @@
 .H-logo img{
     height:37px;
     width: 37px;
-    
 }
 .header-lg- {
-    width: 35px;
-    height:35px;
+    width: 25px;
+    height:25px;
     border-radius: 100%;
 }
 .H-search {
@@ -27,9 +26,8 @@
     font-size: 12px;
 }
 .icons.st {
-    color: black;
-    border-bottom: 2px solid;
-    transition: color .4s ease;
+    color: #2977c9;
+    transition: color .3s ease-in;
 }
 .icons {
     color: #484848;
@@ -64,16 +62,20 @@
 }
 
 @media (max-width:800px) {
-
+    .icons {
+        color: #484848;
+        transition: color .4s ease;
+        padding: 2px 15px;
+    }
     .header {
         padding: 0px 20px ;
         padding-top: 20px;
-        justify-content: space-between;
+        justify-content: space-around;
         display: flex;
     } 
 
     .H-right {
-        width: 85%;
+        width: 90%;
     }
 
 }

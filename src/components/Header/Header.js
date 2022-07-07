@@ -7,6 +7,7 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import BusinessCenter from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from "react-redux";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "../../Actions/userActions";
@@ -106,7 +107,7 @@ function Header() {
             }
             onClick={() => setSt("me")}
           >
-            {" "}
+            
             <img
               className="header-lg-"
               src={
@@ -117,7 +118,7 @@ function Header() {
                   : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
               }
               alt=""
-            />{" "}
+            />
             <p>Me</p>
           </li>
           <li
@@ -128,7 +129,8 @@ function Header() {
             }
             onClick={handleSignOut}
           >
-            <p style={{cursor: 'pointer'}}>Sign Out</p>
+          <LogoutIcon />
+            <p style={{ cursor: "pointer", whiteSpace: "nowrap" }}>Log Out</p>
           </li>
         </ul>
       </div>
