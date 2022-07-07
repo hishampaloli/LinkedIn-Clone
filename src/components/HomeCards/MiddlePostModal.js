@@ -8,6 +8,8 @@ import ReactPlayer from "react-player";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import ChatIcon from "@mui/icons-material/Chat";
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
+import firebase from "firebase/compat/app";
+import { postArticle } from "../../Actions/ArticleActions";
 
 function MiddlePostModal() {
   const user = useSelector((state) => state.userState.user);
@@ -19,17 +21,45 @@ function MiddlePostModal() {
   const [showvid, setshowvid] = useState(false);
   const profile = useSelector((state) => state.ProfileState.showProfile);
 
-  console.log("show>>>>", modal);
-
   const reset = (e) => {
+    setText("");
+    setShareImage("");
+    setVideoLink("");
     dispatch(setModal(false));
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const image = e.target.files[0];
 
-  const switchPhoto = () => {};
+    if (image === "" || image === undefined) {
+      alert(`not an image, the file is a ${typeof image}`);
+      return;
+    }
+    setShareImage(image);
+  };
 
-  const switchVideo = () => {};
+  const switchPhoto = () => {
+    setshowvid(false);
+    setVideoLink("");
+  };
+
+  const switchVideo = () => {
+    setshowvid(true);
+    setShareImage("");
+  };
+
+  const postArticles = (e) => {
+    const payload = {
+      image: shareImage,
+      video: videoLink,
+      user: user,
+      description: text,
+      timestamp: firebase.firestore.Timestamp.now(),
+    };
+
+    dispatch(postArticle(payload));
+    reset(e);
+  };
 
   return (
     <>
@@ -59,7 +89,7 @@ function MiddlePostModal() {
 
             <div className="mdpf-right ml-3">
               <h1>{user.displayName}</h1>
-              <button className="flex px-3">
+              <button className="flex items-center px-3">
                 <PublicIcon /> Anyone <ArrowDropDownIcon />
               </button>
             </div>
@@ -78,10 +108,13 @@ function MiddlePostModal() {
 
           <div className="modal-img flex justify-evenly">
             {shareImage && !videoLink && (
-              <img src={URL.createObjectURL(shareImage)} />
+              <img
+                style={{ width: "95%" }}
+                src={URL.createObjectURL(shareImage)}
+              />
             )}
             {videoLink && !shareImage && (
-              <ReactPlayer width={"45%"} height={"190px"} url={videoLink} />
+              <ReactPlayer width={"95%"} height={"190px"} url={videoLink} />
             )}
           </div>
 
@@ -122,7 +155,7 @@ function MiddlePostModal() {
                   <ChatIcon /> Anyone
                 </li>
                 <button
-                  //   onClick={(e) => postArticle(e)}
+                    onClick={(e) => postArticles(e)}
                   disabled={text === "" ? true : false}
                   style={
                     text === ""

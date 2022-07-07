@@ -35,7 +35,7 @@ function Header() {
         </div>
         <div className="H-search flex flex-row justify-between">
           <SearchIcon className="ic" />
-          <input type="text" placeholder="searhc" />
+          <input type="text" placeholder="search" />
         </div>
       </div>
       <div className="H-right">

@@ -16,8 +16,9 @@
     width: 230px;
     min-width:230px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid lightgray;
+    height: 325px;
 }
 
 .left-top {
@@ -134,6 +135,7 @@
     background-color: white;
     border: 1px solid lightgray;
     margin-left: 20px;
+    height: 320px;
 }
 .rightt p{
     font-size: 16px;
@@ -236,7 +238,7 @@
     background-color: white;
     max-width: 600px;
     border-radius: 5px;
-    min-width: 300px;
+    min-width: 350px;
 }
 
 .post.none {
@@ -292,8 +294,8 @@
 }
 
 .modal-img img {
-    width: 45%;
-    height: 190px;
+    width: 95%;
+    height: 140px;
 }
 @media (max-width:1190px) {
     .rightt {
