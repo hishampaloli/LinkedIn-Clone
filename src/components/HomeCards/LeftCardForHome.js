@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 function LeftCardForHome() {
   useEffect(() => {
     const payload = {
-      email: user.email,
+      email: user?.email ? user?.email : '',
     }
     dispatch(getProfileAPI(payload));
   }, []);
@@ -18,8 +18,6 @@ function LeftCardForHome() {
   const user = useSelector((state) => state.userState.user);
   const profile = useSelector((state) => state.ProfileState.showProfile);
   const [profileImg, setProfileImg] = useState(null);
-  // const [i, setI] = useState('');
-  // setI(user.photoURL)
   // console.log(user.photoURL);
   const dispatch = useDispatch();
 
@@ -57,7 +55,7 @@ function LeftCardForHome() {
             style={{ display: "none" }}
             onChange={handleChange}
           />{" "}
-          {!profile[0] && (
+          {!profile[0] && !user.photoURL && (
             <label htmlFor="pic">
               {" "}
               <AddIcon className="add-icon" fontSize="large" />
@@ -68,13 +66,13 @@ function LeftCardForHome() {
             style={{ borderRadius: "50%", width: "80px", height: "80px" }}
             src={
               profile[0]
-                ? profile[0].sharedImg 
+                ? profile[0].sharedImg : user.photoURL ? user.photoURL
                 : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
             }
             alt=""
           />
         </div>
-        <h1 className="text-base"></h1>
+        <h1 className="text-base">{profile[0]?.email ? profile[0].email.split("@")[0] : user.displayName ? user.displayName : 'Add your Image'}</h1>
         <p>Welcome to linkedIn</p>
       </div>
 

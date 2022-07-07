@@ -21,6 +21,7 @@ function Home() {
 
   const navigate = useNavigate();
   const user = useSelector((state) => state.userState.user);
+  const profile = useSelector((state) => state.ProfileState.showProfile);
 
 
   return (
@@ -37,10 +38,10 @@ function Home() {
                   <div className="pt-left">
                     <img
                       src={
-                        user
-                          ? user.photoURL
-                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
-                      }
+              profile[0]
+                ? profile[0].sharedImg : user.photoURL ? user.photoURL
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
+            }
                       alt=""
                     />
                   </div>

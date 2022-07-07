@@ -12,6 +12,7 @@ function MiddleCardForHome() {
   const user = useSelector((state) => state.userState.user);
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.showState.show)
+  const profile = useSelector((state) => state.ProfileState.showProfile);
 console.log('>>>>',modal);
 
   const handleShow = () => {
@@ -23,7 +24,11 @@ console.log('>>>>',modal);
       <div className="middle-top flex items-center justify-between">
         <div className="logo">
           <img
-            src={user.photoURL ? user.photoURL : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU'}
+            src={
+              profile[0]
+                ? profile[0].sharedImg : user.photoURL ? user.photoURL
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGDy7e81HWRTCOnuK5H8X-5YmiQqslGdanA&usqp=CAU"
+            }
             alt=""
           />
         </div>

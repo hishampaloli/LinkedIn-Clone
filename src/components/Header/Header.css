@@ -8,8 +8,13 @@
 .H-logo img{
     height:37px;
     width: 37px;
+    
 }
-
+.header-lg- {
+    width: 35px;
+    height:35px;
+    border-radius: 100%;
+}
 .H-search {
     background-color: #eef3f8;
     border-radius: 5px;
