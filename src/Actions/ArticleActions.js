@@ -21,7 +21,6 @@ export function postArticle(payload) {
     
     return (dispatch) => {
         dispatch(setArticleLoading(true))
-    
         if (payload.image != '') {
           const upload = storage
           .ref(`images/${payload.image.name}`)
@@ -51,6 +50,7 @@ export function postArticle(payload) {
               sharedImg:downloadURL,
               comments:0,
               description: payload.description,
+              id: payload.id,
             })
             dispatch(setArticleLoading(false))
           }
@@ -70,13 +70,14 @@ export function postArticle(payload) {
             sharedImg:'',
             comments:0,
             description: payload.description,
+            id: payload.id,
           })
           dispatch(setArticleLoading(false))
         }
       };
   }
 
-  export function getArticlesAPI() {
+  export function getArticlesAPI(id) {
     return (dispatch) => {
       let payload;
   
@@ -85,5 +86,14 @@ export function postArticle(payload) {
         payload = snapshot.docs.map((doc) => doc.data());
         dispatch(getArticles(payload))
       })
+    }
+  }
+
+  export function deleteArticleAPI(id) {
+    return (dispatch) => {
+        db.collection("articles").where("id", "==", id).get()
+        .then(querySnapshot => {
+            querySnapshot.docs[0].ref.delete();
+        });
     }
   }

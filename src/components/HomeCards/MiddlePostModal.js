@@ -10,6 +10,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
 import firebase from "firebase/compat/app";
 import { postArticle } from "../../Actions/ArticleActions";
+import { v4 as uuidv4 } from 'uuid';
 
 function MiddlePostModal() {
   const user = useSelector((state) => state.userState.user);
@@ -52,11 +53,12 @@ function MiddlePostModal() {
     const payload = {
       image: shareImage,
       video: videoLink,
-      userImage:  profile[0] ? profile[0].sharedImg : user.photoURL ? user.photoURL : '',
+      userImage:  profile[0] ? profile[0].sharedImg : user.photoURL ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       userName:  profile[0] ? profile[0].email.split("@")[0] : user.displayName ? user.displayName : '',
       user: user,
       description: text,
       timestamp: firebase.firestore.Timestamp.now(),
+      id: uuidv4(),
     };
 
     dispatch(postArticle(payload));

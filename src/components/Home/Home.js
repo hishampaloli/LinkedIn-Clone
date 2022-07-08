@@ -11,10 +11,12 @@ import InsertCommentOutlinedIcon from "@mui/icons-material/InsertCommentOutlined
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { getArticlesAPI } from "../../Actions/ArticleActions";
+import { getArticlesAPI, deleteArticleAPI } from "../../Actions/ArticleActions";
+import DeleteIcon from '@mui/icons-material/Delete';
 import ReactPlayer from "react-player";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { useState } from "react";
 
 function Home() {
 
@@ -29,6 +31,15 @@ useEffect(() => {
   const user = useSelector((state) => state.userState.user);
   const profile = useSelector((state) => state.ProfileState.showProfile);
   const articles = useSelector((state) => state.ArticleState.articles);
+  const [fade, setFade] = useState(false);
+
+  const handleDelete = (e) => {
+    dispatch(deleteArticleAPI(e));
+    setFade(true)
+    setTimeout(() => {
+      setFade(false)
+    }, 500);
+  }
 
   console.log('article >>>', articles);
 
@@ -46,7 +57,7 @@ useEffect(() => {
 </Box> :  (
   <>
   {articles.map(i => {
-    return <div className="middlePosts flex flex-col items-start rounded-lg">
+    return <div  className={fade ? "middlePosts flex flex-col items-start rounded-lg fade" : "middlePosts flex flex-col items-start rounded-lg"}>
 
 <div className="post-top flex flex-row justify-between">
   <div className="pt-left">
@@ -61,6 +72,8 @@ useEffect(() => {
       4h. <PublicIcon />
     </small>
   </div>
+  
+<DeleteIcon className="dlete"  onClick={(e) => handleDelete(i.id)}  />
 </div>
 
 <div className="post-title">
@@ -68,6 +81,7 @@ useEffect(() => {
     {i.description}
   </h1>
 </div>
+
 
 <div className="post-img">
 {i.video === '' ? <img
