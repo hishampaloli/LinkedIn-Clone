@@ -6,6 +6,8 @@ import FeedIcon from "@mui/icons-material/Feed";
 import { useSelector, useDispatch } from "react-redux";
 import { setModal } from "../../Actions/showAction";
 import MiddlePostModal from "./MiddlePostModal";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function MiddleCardForHome() {
 
@@ -13,7 +15,8 @@ function MiddleCardForHome() {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.showState.show)
   const profile = useSelector((state) => state.ProfileState.showProfile);
-console.log('>>>>',modal);
+  const loading = useSelector((state) => state.ArticleState.loading);
+console.log('>>>>',loading);
 
   const handleShow = () => {
     dispatch(setModal(true))
@@ -63,6 +66,8 @@ console.log('>>>>',modal);
       </div>
      
       {modal &&  < MiddlePostModal /> }
+      {loading && <CircularProgress style={{margin:'14px'}} />}
+      
     </div>
   );
 }

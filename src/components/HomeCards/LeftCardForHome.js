@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import AddIcon from "@mui/icons-material/Add";
-import { postProfileAPI, getProfileAPI } from "../../Actions/profileAction";
+import { postProfileAPI, getProfileAPI, loadingAPI } from "../../Actions/profileAction";
 import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -17,8 +17,9 @@ function LeftCardForHome() {
 
   const user = useSelector((state) => state.userState.user);
   const profile = useSelector((state) => state.ProfileState.showProfile);
+  const loading = useSelector((state) => state.ProfileState.loading)
   const [profileImg, setProfileImg] = useState(null);
-  // console.log(user.photoURL);
+ 
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -61,7 +62,7 @@ function LeftCardForHome() {
               <AddIcon className="add-icon" fontSize="large" />
             </label>
           )}
-          {/* {loading ? <CircularProgress style={{ zIndex: "200" }} /> : null} */}
+          {loading ? <CircularProgress style={{ zIndex: "200" }} /> : null}
           <img
             style={{ borderRadius: "50%", width: "80px", height: "80px" }}
             src={

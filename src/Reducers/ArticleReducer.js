@@ -4,12 +4,12 @@ const initialState = {
   };
   
   const articleReducer = (state = initialState, action) => {
-    console.log('action****',action.payload);
+    console.log('action****',action);
     switch (action.type) {
-      case "SET_ARTICLE":
+      case "GET_ARTICLES":
         return {
           ...state,
-          showProfile: action.payload,
+          articles: action.payload,
         };
         case "SET_ARTICLE_LOADING":
           return {

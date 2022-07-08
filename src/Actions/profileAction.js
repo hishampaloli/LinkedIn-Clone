@@ -7,14 +7,18 @@ export const setProfile = (payload) => ({
   payload: payload,
 });
 
-// export const setProfileLoading = (payload) => ({
-//   type: "SET_PROFILE_LOADING",
-//   status: payload,
-// });
+export const setProfileLoading = (status) => ({
+  type: "SET_PROFILE_LOADING",
+  status: status,
+});
+
+export function loadingAPI(pauload) {
+  return (dispatch) => {
+  }
+}
 
 export function postProfileAPI(payload) {
   return (dispatch) => {
-    // dispatch(setProfileLoading(true));
     if (payload.ProfileImg != null) {
       const upload = storage
         .ref(`images/${payload.ProfileImg.name}`)
@@ -36,7 +40,6 @@ export function postProfileAPI(payload) {
             sharedImg: downloadURL,
             email: payload.email,
           });
-          // dispatch(setProfileLoading(false));
         }
       );
     }
@@ -45,6 +48,8 @@ export function postProfileAPI(payload) {
 
 export function getProfileAPI(pay) {
   return (dispatch) => {
+    
+    dispatch(setProfileLoading(true));
     let payload;
     const citiesRef = db.collection("profiles");
 
@@ -60,6 +65,9 @@ export function getProfileAPI(pay) {
         payload = snapshot.docs.map((doc) => doc.data());
         dispatch(setProfile(payload));
         console.log("XXXX>>>", payload);
+        dispatch(setProfileLoading(false));
+        
       });
+      
   };
 }
