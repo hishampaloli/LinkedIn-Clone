@@ -12,8 +12,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userState.user);
-  console.log(">>>.", user);
-
+  const [Ssmall, setSsmall] = useState(false);
 
   return (
     <div class="container">
@@ -36,7 +35,10 @@ function Login() {
           <li class="ico">
             <i class="fa-solid fa-briefcase"></i>Jobs
           </li>
-          <Link to='/join' > <li class="join"> Join now </li></Link>
+          <Link to="/join">
+            {" "}
+            <li class="join"> Join now </li>
+          </Link>
           <li>
             <button onClick={() => dispatch(signInWithGoogle())}>
               Sign in
@@ -70,7 +72,10 @@ function Login() {
           <li class="ico">
             <i class="fa-solid fa-briefcase"></i>Jobs
           </li>
-          <Link to='/join' > <li class="join"> Join now </li></Link>
+          <Link to="/join">
+            {" "}
+            <li class="join"> Join now </li>
+          </Link>
           <li>
             <button onClick={() => dispatch(signInWithGoogle())}>
               Sign in
@@ -83,7 +88,10 @@ function Login() {
         <div class="left">
           <h1>Welcome to your professional community</h1>
 
-           <Link to='/join'> <button class="sign-in" > Join Now</button> </Link>
+          <Link to="/join">
+            {" "}
+            <button class="sign-in"> Join Now</button>{" "}
+          </Link>
 
           <div class="line">
             <div class="line-1"></div>
