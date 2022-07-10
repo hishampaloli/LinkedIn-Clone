@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signInWithGoogle } from "../../Actions/userActions";
-import { Link } from "react-router-dom";
 import "./Login.css";
 import img1 from "./img/logo.png";
 import img2 from "./img/home-img.svg";
