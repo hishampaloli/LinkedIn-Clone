@@ -18,7 +18,9 @@ function Login() {
       {user && navigate("/home")}
       <nav>
         <div class="logo">
-          <img src={img1} alt="" />
+          <Link to="/">
+            <img src={img1} alt="" />
+          </Link>
         </div>
 
         <ul class="nav-ul">
